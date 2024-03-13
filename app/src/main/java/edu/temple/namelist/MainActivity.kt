@@ -2,6 +2,7 @@ package edu.temple.namelist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
@@ -41,6 +42,16 @@ class MainActivity : AppCompatActivity() {
                 (names as MutableList).removeAt(spinner.selectedItemPosition)
                 (spinner.adapter as BaseAdapter).notifyDataSetChanged()
             }
+
+            if(spinner.getCount() == 0){
+            } else if (spinner.selectedItemPosition == names.size) {
+                //Log.d("Message", "1st if statement")
+                nameTextView.text = names[spinner.selectedItemPosition - 1]
+            }else{
+                //Log.d("Message", "2nd if statement")
+                nameTextView.text = names[spinner.selectedItemPosition].toString()
+            }
+
         }
 
     }
